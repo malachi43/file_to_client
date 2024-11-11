@@ -1,0 +1,68 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>transformToHtmlStream.html</title>
+    <script defer src="C:\Users\Chibuike\project\serverToHtml\browser\script.js"></script>
+     <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-family:'Courier New', Courier, monospace;
+        margin: 20px;
+        padding: 20px;
+        border: 1px dashed black;
+      }
+     footer{
+        position: fixed;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        background-color: black;
+        color: white;
+        padding: 8px 16px;
+    }
+    ul {
+    list-style-type: none;
+    }
+    ul li{
+    border-inline-start: 1px solid black;
+    border-block-end: 1px solid black;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+    }
+    ul li a {
+    text-decoration: none;
+    }
+    h1{
+      text-decoration: underline;
+    }
+    h3{
+    font-weight: bold;
+    font-variant: small-caps;
+    }
+    </style>
+  </head>
+  <body>
+
+  <nav><ul><h3>available file(s) will be listed:</h3><li><a href="convertJsToHtml.html">convertJsToHtml</a></li><li><a href="createHtmlFileFromJsFile.html">createHtmlFileFromJsFile</a></li><li><a href="makeDirectory.html">makeDirectory</a></li><li><a href="readlineStream.html">readlineStream</a></li><li><a href="returnJsFileFromDirectory.html">returnJsFileFromDirectory</a></li><li><a href="writeToHtmlStream.html">writeToHtmlStream</a></li></ul></nav?>
+  <h1>transformToHtmlStream</h1><pre>const { Transform } = require("node:stream");</pre>
+<pre>/**</pre>
+<pre> * </pre>
+<pre> * @returns Transform Stream (This stream is used to convert a stream to an html element).</pre>
+<pre> */</pre>
+<pre>const transformToHtml = () => {</pre>
+<pre>    const { EOL } = require("node:os");</pre>
+<pre>    const transformStream = new Transform({ encoding: "utf-8" });</pre>
+<pre>    transformStream._transform = (chunk, _, done) => {</pre>
+<pre>        chunk = chunk.toString();</pre>
+<pre>        const htmlLine = `<pre>${chunk}</pre>${EOL}`</pre>
+<pre>        transformStream.push(htmlLine);</pre>
+<pre>        done();</pre>
+<pre>    }</pre>
+<pre>    return transformStream;</pre>
+<pre>}</pre>
+<pre>module.exports = transformToHtml;</pre>
