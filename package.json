@@ -1,0 +1,35 @@
+{
+  "name": "file_to_client",
+  "version": "1.0.0",
+  "description": "This package is used to convert any text file to an html file that can be served as a webpage.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malachi43/file_to_client.git"
+  },
+  "keywords": [
+    "stream",
+    "html",
+    "transform",
+    "directory"
+  ],
+  "author": "UKO CHIBUIKE MALACHI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malachi43/file_to_client/issues"
+  },
+  "homepage": "https://github.com/malachi43/file_to_client#readme"
+}
