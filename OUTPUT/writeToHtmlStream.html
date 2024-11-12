@@ -3,16 +3,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>writeToHtmlStream.html</title>
-    <script defer src="C:\Users\Chibuike\project\serverToHtml\browser\script.js"></script>
      <style>
       body {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        flex-wrap: wrap;
         font-family:'Courier New', Courier, monospace;
         margin: 20px;
+        margin-bottom: 50px;
         padding: 20px;
-        border: 1px dashed black;
+        max-width: 90%;
       }
      footer{
         position: fixed;
@@ -23,6 +23,9 @@
         background-color: black;
         color: white;
         padding: 8px 16px;
+    }
+    nav{
+     margin-block-end: 50px;
     }
     ul {
     list-style-type: none;
@@ -37,19 +40,30 @@
     ul li a {
     text-decoration: none;
     }
-    h1{
-      text-decoration: underline;
+    h2{
+    border: 1px solid black;
+    background-color: black;
+    padding: 10px;
+    margin-top: -27px;
+    color: white;
+    max-width: fit-content;
     }
     h3{
     font-weight: bold;
     font-variant: small-caps;
+    margin-block: 30px;
+    }
+    main{
+     border-inline-end: 1px dashed black;
+     border-block-start: 1px dashed black;
     }
     </style>
   </head>
   <body>
 
-  <nav><ul><h3>available file(s) will be listed:</h3><li><a href="convertJsToHtml.html">convertJsToHtml</a></li><li><a href="createHtmlFileFromJsFile.html">createHtmlFileFromJsFile</a></li><li><a href="makeDirectory.html">makeDirectory</a></li><li><a href="readlineStream.html">readlineStream</a></li><li><a href="returnJsFileFromDirectory.html">returnJsFileFromDirectory</a></li><li><a href="transformToHtmlStream.html">transformToHtmlStream</a></li></ul></nav?>
-  <h1>writeToHtmlStream</h1><pre>const fs = require("node:fs");</pre>
+  <nav><ul><h3>available file(s) will be listed:</h3><li><a href="convertJsToHtml.html">convertJsToHtml</a></li><li><a href="createHtmlFileFromJsFile.html">createHtmlFileFromJsFile</a></li><li><a href="makeDirectory.html">makeDirectory</a></li><li><a href="readlineStream.html">readlineStream</a></li><li><a href="returnJsFileFromDirectory.html">returnJsFileFromDirectory</a></li><li><a href="transformToHtmlStream.html">transformToHtmlStream</a></li></ul></nav>
+  <main>
+  <h2>writeToHtmlStream</h2><pre>const fs = require("node:fs");</pre>
 <pre>const { EOL } = require("node:os");</pre>
 <pre>const { Writable } = require("node:stream");</pre>
 <pre>const path = require("node:path");</pre>
@@ -57,40 +71,39 @@
 <pre>/**</pre>
 <pre> * </pre>
 <pre> * @param {string} filename file to create a writable stream from. </pre>
-<pre> * @param {string[]} fileArray array containing all the file to create a writable stream from. </pre>
+<pre> * @param {string[]} fileArray array containing all the file to create a navigation link from.</pre>
 <pre> * @returns </pre>
 <pre> */</pre>
 <pre>const writeToHtmlstream = (filename, fileArray) => {</pre>
-<pre>    if (!fileArray) throw new Error</pre>
-<pre>        (`fileArray argument missing got ${fileArray}.`)</pre>
-<pre>    const newFilename = convertJsToHtml(filename)</pre>
-<pre>    const fileLinks = fileArray.flatMap(file => {</pre>
-<pre>        if (!file.startsWith(filename)) {</pre>
-<pre>            const newFilename = convertJsToHtml(file)</pre>
-<pre>            const link = `${newFilename}`</pre>
-<pre>            let href = `<li><a href="${link}">${newFilename.split(".")[0]}</a></li>`</pre>
-<pre>            return [href];</pre>
-<pre>        }</pre>
-<pre>        return [];</pre>
-<pre>    }).join("");</pre>
-<pre>    const heading = "available file(s) will be listed:"</pre>
-<pre>    let navigation = `<nav><ul><h3>${heading}</h3>${fileLinks}</ul></nav?>`</pre>
-<pre>    const script = path.join(process.cwd(), "browser", "script.js");</pre>
-<pre>    const top = `<html lang="en"></pre>
+<pre>  if (!fileArray) throw new Error</pre>
+<pre>    (`fileArray argument missing got ${fileArray}.`)</pre>
+<pre>  const newFilename = convertJsToHtml(filename)</pre>
+<pre>  const fileLinks = fileArray.flatMap(file => {</pre>
+<pre>    if (!file.startsWith(filename)) {</pre>
+<pre>      const newFilename = convertJsToHtml(file)</pre>
+<pre>      const link = `${newFilename}`</pre>
+<pre>      let href = `<li><a href="${link}">${newFilename.split(".")[0]}</a></li>`</pre>
+<pre>      return [href];</pre>
+<pre>    }</pre>
+<pre>    return [];</pre>
+<pre>  }).join("");</pre>
+<pre>  const heading = "available file(s) will be listed:"</pre>
+<pre>  let navigation = `<nav><ul><h3>${heading}</h3>${fileLinks}</ul></nav>`</pre>
+<pre>  let top = `<html lang="en"></pre>
 <pre>  <head></pre>
 <pre>    <meta charset="UTF-8" /></pre>
 <pre>    <meta name="viewport" content="width=device-width, initial-scale=1.0" /></pre>
 <pre>    <title>${newFilename}</title></pre>
-<pre>    <script defer src="${script}"></script></pre>
 <pre>     <style></pre>
 <pre>      body {</pre>
 <pre>        display: flex;</pre>
 <pre>        flex-direction: column;</pre>
-<pre>        justify-content: flex-start;</pre>
+<pre>        flex-wrap: wrap;</pre>
 <pre>        font-family:'Courier New', Courier, monospace;</pre>
 <pre>        margin: 20px;</pre>
+<pre>        margin-bottom: 50px;</pre>
 <pre>        padding: 20px;</pre>
-<pre>        border: 1px dashed black;</pre>
+<pre>        max-width: 90%;</pre>
 <pre>      }</pre>
 <pre>     footer{</pre>
 <pre>        position: fixed;</pre>
@@ -101,6 +114,9 @@
 <pre>        background-color: black;</pre>
 <pre>        color: white;</pre>
 <pre>        padding: 8px 16px;</pre>
+<pre>    }</pre>
+<pre>    nav{</pre>
+<pre>     margin-block-end: 50px;</pre>
 <pre>    }</pre>
 <pre>    ul {</pre>
 <pre>    list-style-type: none;</pre>
@@ -115,34 +131,47 @@
 <pre>    ul li a {</pre>
 <pre>    text-decoration: none;</pre>
 <pre>    }</pre>
-<pre>    h1{</pre>
-<pre>      text-decoration: underline;</pre>
+<pre>    h2{</pre>
+<pre>    border: 1px solid black;</pre>
+<pre>    background-color: black;</pre>
+<pre>    padding: 10px;</pre>
+<pre>    margin-top: -27px;</pre>
+<pre>    color: white;</pre>
+<pre>    max-width: fit-content;</pre>
 <pre>    }</pre>
 <pre>    h3{</pre>
 <pre>    font-weight: bold;</pre>
 <pre>    font-variant: small-caps;</pre>
+<pre>    margin-block: 30px;</pre>
+<pre>    }</pre>
+<pre>    main{</pre>
+<pre>     border-inline-end: 1px dashed black;</pre>
+<pre>     border-block-start: 1px dashed black;</pre>
 <pre>    }</pre>
 <pre>    </style></pre>
 <pre>  </head></pre>
 <pre>  <body>${EOL}</pre>
 <pre>  ${navigation}</pre>
-<pre>  <h1>${newFilename.split(".")[0]}</h1>`;</pre>
-<pre>    const bottom = `</body><footer>Made with ❤ by UKO CHBUIKE MALACHI</footer></html>`</pre>
-<pre>    const fileLocation = path.join(process.cwd(), "OUTPUT", newFilename)</pre>
-<pre>    const outputFileStream = fs.createWriteStream(fileLocation);</pre>
-<pre>    outputFileStream.write(top);</pre>
-<pre>    const htmlOutputStream = new Writable();</pre>
-<pre>    htmlOutputStream._write = (chunk, _, done) => {</pre>
-<pre>        outputFileStream.write(chunk);</pre>
-<pre>        done();</pre>
-<pre>    }</pre>
-<pre>    htmlOutputStream.on("finish", () => {</pre>
-<pre>        outputFileStream.write(bottom);</pre>
-<pre>        outputFileStream.end();</pre>
-<pre>    })</pre>
-<pre>    outputFileStream.on("error", (err) => {</pre>
-<pre>        htmlOutputStream.emit("error", err);</pre>
-<pre>    })</pre>
-<pre>    return htmlOutputStream;</pre>
+<pre>  <main></pre>
+<pre>  <h2>${newFilename.split(".")[0]}</h2>`;</pre>
+<pre>  let bottom = `</main><footer>Made with ❤ by UKO CHBUIKE MALACHI</footer></body></html>`</pre>
+<pre>  //where to save the output files.</pre>
+<pre>  const fileLocation = path.join(process.cwd(), "OUTPUT", newFilename)</pre>
+<pre>  const outputFileStream = fs.createWriteStream(fileLocation);</pre>
+<pre>  //write the html portion to the file.</pre>
+<pre>  outputFileStream.write(top);</pre>
+<pre>  const htmlOutputStream = new Writable();</pre>
+<pre>  htmlOutputStream._write = (chunk, _, done) => {</pre>
+<pre>    outputFileStream.write(chunk);</pre>
+<pre>    done();</pre>
+<pre>  }</pre>
+<pre>  htmlOutputStream.on("finish", () => {</pre>
+<pre>    outputFileStream.write(bottom);</pre>
+<pre>    outputFileStream.end();</pre>
+<pre>  })</pre>
+<pre>  outputFileStream.on("error", (err) => {</pre>
+<pre>    htmlOutputStream.emit("error", err);</pre>
+<pre>  })</pre>
+<pre>  return htmlOutputStream;</pre>
 <pre>}</pre>
 <pre>module.exports = writeToHtmlstream</pre>
