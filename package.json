@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r dotenv/config test.js"
+    "start": "node lib/cli.js serve"
   },
   "repository": {
     "type": "git",
@@ -29,13 +29,17 @@
   ],
   "author": "UKO CHIBUIKE MALACHI",
   "license": "MIT",
+  "bin": {
+    "ftc": "./lib/cli.js"
+  },
   "bugs": {
     "url": "https://github.com/malachi43/file_to_client/issues"
   },
   "homepage": "https://github.com/malachi43/file_to_client#readme",
   "dependencies": {
-    "@ngrok/ngrok": "^1.4.1",
+    "commander": "^13.1.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "glob": "^11.0.1"
   }
 }
