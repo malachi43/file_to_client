@@ -1,0 +1,7 @@
+{
+    "exclude": [
+        "*lock.json"
+    ],
+    "dir": "lib",
+    "ext": "js"
+}
