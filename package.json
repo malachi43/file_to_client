@@ -37,6 +37,8 @@
   },
   "homepage": "https://github.com/malachi43/file_to_client#readme",
   "dependencies": {
+    "@ngrok/ngrok": "^1.4.1",
+    "@ngrok/ngrok-win32-x64-msvc": "^1.4.1",
     "commander": "^13.1.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
